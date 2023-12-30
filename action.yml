@@ -16,9 +16,15 @@ runs:
 
     - name: Analyze Pull Request
       run: |
+        PR_NUMBER=${{ github.event.pull_request.number }}
         PR_TITLE=$(curl -s "https://api.github.com/repos/${{ github.repository }}/pulls/${{ github.event.pull_request.number }}" | jq -r '.title')
         PR_BODY=$(curl -s "https://api.github.com/repos/${{ github.repository }}/pulls/${{ github.event.pull_request.number }}" | jq -r '.body')
 
+        echo "Debug Information:"
+        echo "PR_NUMBER: $PR_NUMBER"
+        echo "PR_TITLE: $PR_TITLE"
+        echo "PR_BODY: $PR_BODY"
+  
         if [[ "$PR_TITLE" == *"bug"* || "$PR_BODY" == *"fix"* ]]; then
           echo "Found bug-related content. Adding 'bug' label."
           LABEL_TO_ADD="bug"
