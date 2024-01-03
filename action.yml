@@ -26,6 +26,12 @@ runs:
     - name: Analyze Pull Request
       id: analyze-pr
       run: |
+        # Display PR number
+        echo "Pull Request Number: ${{ github.event.pull_request.number }}"
+
+        # Display GitHub Token (for debugging purposes only)
+        echo "GitHub Token: ${{ inputs.github-token }}"
+
         PR_DATA=$(curl -s -H "Authorization: token ${{ inputs.github-token }}" \
           -H "Accept: application/vnd.github.v3+json" \
           "https://api.github.com/repos/${{ github.repository }}/pulls/${{ github.event.pull_request.number }}")
@@ -34,8 +40,8 @@ runs:
         PR_BODY=$(echo "$PR_DATA" | jq -r '.body')
         
         echo "Debug Information:"
-        echo "PR_TITLE= $PR_TITLE" >> $GITHUB_OUTPUT
-        echo "PR_BODY= $PR_BODY" >> $GITHUB_OUTPUT
+        echo "PR_TITLE= $PR_TITLE"
+        echo "PR_BODY= $PR_BODY"
 
         if [[ "$PR_TITLE" == *"bug"* || "$PR_BODY" == *"fix"* ]]; then
           echo "Found bug-related content. Adding 'bug' label."
