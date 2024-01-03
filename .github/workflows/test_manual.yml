@@ -1,0 +1,24 @@
+name: Test Manual Trigger
+
+on:
+  workflow_dispatch: 
+
+jobs:
+  test-manual:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Test My Action
+        uses: ./  # Use the relative path to the directory containing your action.yml
+        run: |
+          NUMBER=3
+          echo "Setting NUMBER to $NUMBER"  # For debugging, to verify the value
+
+          # Echo the GitHub token (for debugging)
+          echo "GitHub Token: ${{ secrets.GH_TOKEN }}"
+        with:
+          github-token: ${{ secrets.GH_TOKEN }}  # Replace with your specific input variables
+          
