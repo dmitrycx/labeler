@@ -4,16 +4,6 @@ inputs:
   github-token:
     description: 'GitHub Token'
     required: true
-outputs:
-  PR_NUMBER:
-    description: "PR number"
-    value: ${{ steps.analyze-pr.outputs.PR_NUMBER}}
-  PR_TITLE:
-    description: "PR title"
-    value: ${{ steps.analyze-pr.outputs.PR_TITLE}}
-  PR_BODY:
-    description: "PR body"
-    value: ${{ steps.analyze-pr.outputs.PR_BODY}}
 runs:
   using: 'composite'
   steps:
