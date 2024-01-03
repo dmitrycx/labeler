@@ -12,7 +12,6 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Test My Action
-        uses: ./  # Use the relative path to the directory containing your action.yml
         env:
           github-token: ${{ secrets.GH_TOKEN }}  # Set environment variable for the action script
         run: |
