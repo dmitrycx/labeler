@@ -12,11 +12,9 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Test My Action
-        env:
-          github-token: ${{ secrets.GH_TOKEN }}  # Set environment variable for the action script
         run: |
           NUMBER=3
           echo "Setting NUMBER to $NUMBER"  # For debugging, to verify the value
           
           # Echo the GitHub token (for debugging)
-          echo "GitHub Token: ${github-token}"  # Access the token via the environment variable
+          echo "GitHub Token: $GH_TOKEN"  # Access the token via the environment variable
