@@ -13,12 +13,11 @@ jobs:
 
       - name: Test My Action
         uses: ./  # Use the relative path to the directory containing your action.yml
+        env:
+          github-token: ${{ secrets.GH_TOKEN }}  # Set environment variable for the action script
         run: |
           NUMBER=3
           echo "Setting NUMBER to $NUMBER"  # For debugging, to verify the value
-
-          # Echo the GitHub token (for debugging)
-          echo "GitHub Token: ${{ secrets.GH_TOKEN }}"
-        with:
-          github-token: ${{ secrets.GH_TOKEN }}  # Replace with your specific input variables
           
+          # Echo the GitHub token (for debugging)
+          echo "GitHub Token: $github-token"  # Access the token via the environment variable
