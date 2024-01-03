@@ -19,4 +19,4 @@ jobs:
           echo "Setting NUMBER to $NUMBER"  # For debugging, to verify the value
           
           # Echo the GitHub token (for debugging)
-          echo "GitHub Token: $github-token"  # Access the token via the environment variable
+          echo "GitHub Token: ${github-token}"  # Access the token via the environment variable
