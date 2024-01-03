@@ -17,4 +17,4 @@ jobs:
           echo "Setting NUMBER to $NUMBER"  # For debugging, to verify the value
           
           # Echo the GitHub token (for debugging)
-          echo "GitHub Token: $GH_TOKEN"  # Access the token via the environment variable
+          echo "GitHub Token: ${{ secrets.TEST_SECRET }}"  # Access the token via the environment variable
