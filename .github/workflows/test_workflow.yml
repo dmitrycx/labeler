@@ -15,5 +15,5 @@ jobs:
       - name: Test My Action
         uses: ./  # Use the relative path to the directory containing your action.yml
         with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}  # Replace with your specific input variables
+          github-token: ${{ secrets.GH_TOKEN }}  # Replace with your specific input variables
           
