@@ -16,12 +16,6 @@ runs:
     - name: Analyze Pull Request
       id: analyze-pr
       run: |
-        # Display PR number
-        echo "Pull Request Number: ${{ github.event.pull_request.number }}"
-
-        # Display GitHub Token (for debugging purposes only)
-        echo "GitHub Token: ${{ inputs.github-token }}"
-
         PR_DATA=$(curl -s -H "Authorization: token ${{ inputs.github-token }}" \
           -H "Accept: application/vnd.github.v3+json" \
           "https://api.github.com/repos/${{ github.repository }}/pulls/${{ github.event.pull_request.number }}")
